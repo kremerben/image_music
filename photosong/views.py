@@ -42,6 +42,7 @@ def home(request):
                 current_tag.save()
                 tags.append(name)
 
+            #FOR DEMO - ERROR CHECKING
             if len(tags) == 0:
                 tags = ['power', 'lines', 'castle', 'awning', 'sunrise', 'downtown']
 
@@ -51,18 +52,11 @@ def home(request):
                 search_results = client.get('/tracks', q=tag, sharing='public', embeddable_by='all', streamable='true', )
                 tracks += search_results
 
-            #ATTEMPT TO REMOVE EMPTY TRACKS BEFORE SENDING TO PAGE
-            # good_tracks = []
-            # for track in tracks[:]:
-            #     if not hasattr(track, 'id'):
-            #         tracks.remove(track)
-            #
-            # for track in tracks[:]:
-            #     if hasattr(track, 'id') or track.id > 1:
-            #         good_tracks.append(track)
+            #REMOVE EMPTY TRACKS BEFORE SENDING TO PAGE
+            good_tracks = [i for i in tracks if hasattr(i, "id") and int(i.id) > 1]
 
-            shuffle(tracks)
-            album_tracks = sample(tracks, 10)
+            shuffle(good_tracks)
+            album_tracks = sample(good_tracks, 10)
 
             #CHECKING FOR EMPTY FIELDS BEING RETURNED
             for track in album_tracks:
