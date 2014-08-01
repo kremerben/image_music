@@ -5,6 +5,7 @@ from django.db import models
 
 class Photo(models.Model):
     # owner = models.ForeignKey(User, related_name='owner')
+    # Probably don't want this to be null or blank?
     image = models.ImageField(upload_to='user_images/', null=True, blank=True)
 
     def __unicode__(self):
@@ -13,6 +14,7 @@ class Photo(models.Model):
 
 class Song(models.Model):
     soundcloud_id = models.IntegerField()
+    # related name should be 'songs' here, you would have a photo object and would want to do photo.songs
     photo = models.ForeignKey(Photo, related_name='photo')
     title = models.CharField(max_length=300, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
@@ -20,6 +22,7 @@ class Song(models.Model):
     download_url = models.URLField(null=True, blank=True)
     artwork_url = models.URLField(null=True, blank=True)
     waveform_url = models.URLField(null=True, blank=True)
+    # Genre could be a separate model
     genre = models.CharField(max_length=200, null=True, blank=True)
     tag_list = models.CharField(max_length=500, null=True, blank=True)
 
