@@ -60,6 +60,9 @@ def home(request):
 
             #CHECKING FOR EMPTY FIELDS BEING RETURNED
             for track in album_tracks:
+                
+                # For all of these it would be much cleaner if you did title = getattr(track, 'title', "Untitled")
+                # Basically if the object doesn't have that attribute, you can specify the default value
                 try:
                     title = track.title
                 except Exception, e:
