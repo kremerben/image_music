@@ -15,4 +15,5 @@ class SongAdmin(admin.ModelAdmin):
 
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Song, SongAdmin)
+admin.site.register(Tag)
 

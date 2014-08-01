@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'photosong',
+    'requests',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,6 +88,7 @@ STATIC_URL = '/static/'
 #
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static-only')
+STATIC_MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
@@ -106,6 +109,8 @@ KAIROS_API_KEY = '727ff689667c548878e56369109af78f'
 SOUNDCLOUD_CLIENT_ID = '00b06e88ddbb852fd7c6be9b9291b676'
 SOUNDCLOUD_SECRET = '90b30c6e1ed1a47410cbc328011aae4c'
 
+REKOGNITION_API_KEY = "U5TBVS2zxp8b7WoM"
+REKOGNITION_API_SECRET = 'vKPn2LHkWHQKMUVK'
 
 # AUTH_USER_MODEL = "similarity.User"
 

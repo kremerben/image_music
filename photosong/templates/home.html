@@ -1,31 +1,80 @@
 {% extends "base.html" %}
 {% block nav %}{% endblock %}
+{#{%  if photo %}:#}
+{#    {% block bodytag %}style="background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover;"{% endblock %}#}
+{#{% endif %}#}
+
+    {% load staticfiles %}
 {% block content %}
-
-
+{% if form %}
     <form method="post" action="." enctype="multipart/form-data">
         {% csrf_token %}
 {{ form.as_p }}
         <input type="submit" value="Upload">
     </form>
+{% endif %}
+{#    <hr>#}
+{#    <hr>#}
+{##}
+{#    <h2>Results:</h2>#}
+{#    <div id="resultsBox">#}
+{#    {{ photo }}#}
+{#    </div>#}
+{#    <hr>#}
+<div class="row" id="fullResults">
+{% if album_tracks %}
+<div class="col-sm-12 col-md-6" id="resultImage" style="height:480px;width:50%;background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover; " />
+{% else %}
+<div class="col-sm-12 col-md-6" id="resultImage"><h1 class="dropImageText">Drag image Here</h1></div>
+{% endif %}
+</div>
+<div class="col-sm-12 col-md-6" id="resultTracks">
+    <div class="row" id="individualResults">
+        {% for a_track in album_tracks %}
+            {% if a_track.id %}
+                <div class="col-sm-12 singleTrack">
+                <iframe id="sc-widget" width="100%" height="100" scrolling="no"
+                    frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F{{  a_track.id }}&show_artwork=true&show_comments=true"></iframe>
+                <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
+                <script type="text/javascript">
+                  (function(){
+                    var widgetIframe = document.getElementById('sc-widget'),
+                        widget       = SC.Widget(widgetIframe),
+                        newSoundUrl = 'http://api.soundcloud.com/tracks/{{  a_track.id }}';
 
-    <hr>
-    <hr>
+                    widget.bind(SC.Widget.Events.READY, function() {
+                      // load new widget
+                      widget.bind(SC.Widget.Events.FINISH, function() {
+                        widget.load(newSoundUrl, {
+                          show_artwork: false,
+                          show_comments: false,
+                        });
+                       });
+                    });
+                }());
+            </script>
 
-    <h2>Results:</h2>
-    <div id="resultsBox">
-    {{ photo }}
+
+<!--                   id: {{ a_track.id }}
+                   url: {{ a_track.stream_url }}
+                   id: {{ a_track.download_url }}-->
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
     </div>
+</div>
+
+
+
+</div>
 
 
 
     {% endblock %}
 
-
-
-
     {% block subnav %}
-
     {% endblock %}
 
 
