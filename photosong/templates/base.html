@@ -24,6 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		  <!---- start-smoth-scrolling---->
 		<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
 		<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+        <script src="{% static 'js/dropzone.min.js' %}"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){		
@@ -43,6 +44,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 {#		webfonts#}
 {#		--start-top-nav-script--#}
+		<link href="{% static 'css/dropzone.css' %}" rel='stylesheet' type='text/css' />
 		<script>
 			$(function() {
 				var pull 		= $('#pull');
@@ -65,7 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		{% block head %}{% endblock %}
 	</head>
 	<body >
-		<div class="bg" >
+		<div class="bg" style="min-height: 1100px;">
 		<!----- start-header---->
 			<div id="home" class="header wow bounceInDown" data-wow-delay="0.4s">
 					<div class="top-header">

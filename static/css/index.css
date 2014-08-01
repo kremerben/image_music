@@ -11,7 +11,16 @@
     height:480px;
     background-size: cover;
 }
+#preResultImage {
+    /*border: 10px solid #FFF !important;*/
+    width:100%;
+    height:480px;
+    background-size: cover;
+}
 
+.fieldWrapper {
+    margin: 0 0 15px 81px;
+}
 
 
 #resultTracks {
@@ -29,7 +38,7 @@
 }
 
 .banner-info {
-    padding: 0 0 12em ;
+    padding: 0 0 1em ;
     color: #FFF;
 }
 .banner-info a {
@@ -62,9 +71,29 @@ h1.dropImageText {
     font-weight: 400;
 }
 
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    filter: FlipH;
-    -ms-filter: "FlipH";
+form.form {
+width: 400px;
+text-align: center;
+margin: 0 auto;
+height: 109px;
+padding: 20px;
+/* border: 10px solid #FFF; */
+/* font-size: 2em; */
+background-color: white;
+color: black;
+}
+
+    /*-moz-transform: scaleX(-1);*/
+    /*-o-transform: scaleX(-1);*/
+    /*-webkit-transform: scaleX(-1);*/
+    /*transform: scaleX(-1);*/
+    /*filter: FlipH;*/
+    /*-ms-filter: "FlipH";*/
+
+
+.tags {
+    margin-top: 500px;
+list-style: none;
+font-size: 1.5em;
+
+}

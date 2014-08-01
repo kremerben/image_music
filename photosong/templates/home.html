@@ -6,13 +6,6 @@
 
     {% load staticfiles %}
 {% block content %}
-{% if form %}
-    <form method="post" action="." enctype="multipart/form-data">
-        {% csrf_token %}
-{{ form.as_p }}
-        <input type="submit" value="Upload">
-    </form>
-{% endif %}
 {#    <hr>#}
 {#    <hr>#}
 {##}
@@ -24,8 +17,29 @@
 <div class="row" id="fullResults">
 {% if album_tracks %}
 <div class="col-sm-12 col-md-6" id="resultImage" style="height:480px;width:50%;background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover; " />
+{% if tags %}<ul class="tags">
+    {% for tag in tags %}
+<li>{{ tag }}</li>
+
+    {% endfor %}
+    </ul>
+    {% endif %}
+
 {% else %}
-<div class="col-sm-12 col-md-6" id="resultImage"><h1 class="dropImageText">Drag image Here</h1></div>
+<div class="col-sm-12 col-md-6" id="preResultImage">
+{% if form %}
+    <form method="post" action="." enctype="multipart/form-data" class="form" >
+        {% csrf_token %}
+        <div class="fieldWrapper">
+            {{ form.message.errors }}
+           <!-- <label for="id_image">Image:</label>-->
+            {{ form.image }}
+        </div>
+        <input type="submit" value="Upload">
+    </form>
+{% endif %}
+
+</div>
 {% endif %}
 </div>
 <div class="col-sm-12 col-md-6" id="resultTracks">

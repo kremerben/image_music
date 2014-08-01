@@ -117,6 +117,7 @@ def home(request):
             #     'album_tracks': album_tracks
             # }
             data = {
+                'tags': tags,
                 'photo': photo,
                 'album_tracks': album_tracks
             }
