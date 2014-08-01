@@ -16,6 +16,7 @@ def home(request):
             photo = form.save()
             photo_url = settings.STATIC_MEDIA_ROOT + photo.image.url
 
+            # HARDCODED FOR DEMO PURPOSES
             if 'yosemite' in photo_url:
                 urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
             elif 'spaceman' in photo_url:
@@ -28,9 +29,6 @@ def home(request):
                 "api_secret": settings.REKOGNITION_API_SECRET,
                 "jobs": "scene_understanding_3",
                 "urls": urls,
-            }
-            headers = {
-                "Accept": "*/*",
             }
             r = requests.get(url, params=payload)
             # return render(request, "gallery/view_gallery.html", r.response)
@@ -53,6 +51,7 @@ def home(request):
                 search_results = client.get('/tracks', q=tag, sharing='public', embeddable_by='all', streamable='true', )
                 tracks += search_results
 
+            #ATTEMPT TO REMOVE EMPTY TRACKS BEFORE SENDING TO PAGE
             # good_tracks = []
             # for track in tracks[:]:
             #     if not hasattr(track, 'id'):
@@ -62,11 +61,10 @@ def home(request):
             #     if hasattr(track, 'id') or track.id > 1:
             #         good_tracks.append(track)
 
-
-
             shuffle(tracks)
             album_tracks = sample(tracks, 10)
 
+            #CHECKING FOR EMPTY FIELDS BEING RETURNED
             for track in album_tracks:
                 try:
                     title = track.title
@@ -106,16 +104,6 @@ def home(request):
                     sc_id = 999
                 Song.objects.create(photo=photo,title=title,description=description,stream_url=stream_url,download_url=download_url,artwork_url=artwork_url,waveform_url=waveform_url,genre=genre,soundcloud_id=sc_id,tag_list=tag_list)
 
-
-
-            # data = {
-            #     'response': r,
-            #     'info': r.raw,
-            #     'matches': matches,
-            #     'tags': tags,
-            #     'tracks': tracks,
-            #     'album_tracks': album_tracks
-            # }
             data = {
                 'tags': tags,
                 'photo': photo,
@@ -130,13 +118,6 @@ def home(request):
 
 
 
-
-
-
-
-
-
-#
 #
 # def profile_update(request):
 #     user = User.objects.get(id=user_id)

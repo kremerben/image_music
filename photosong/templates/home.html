@@ -1,22 +1,11 @@
 {% extends "base.html" %}
 {% block nav %}{% endblock %}
-{#{%  if photo %}:#}
-{#    {% block bodytag %}style="background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover;"{% endblock %}#}
-{#{% endif %}#}
 
     {% load staticfiles %}
 {% block content %}
-{#    <hr>#}
-{#    <hr>#}
-{##}
-{#    <h2>Results:</h2>#}
-{#    <div id="resultsBox">#}
-{#    {{ photo }}#}
-{#    </div>#}
-{#    <hr>#}
 <div class="row" id="fullResults">
 {% if album_tracks %}
-<div class="col-sm-12 col-md-6" id="resultImage" style="height:480px;width:50%;background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover; " />
+<div class="col-sm-12 col-md-6" id="resultImage" style="max-height:480px;margin-bottom:30px;background: url('static/media/{{ photo }}') center 30% transparent;background-size: cover; " />
 {% if tags %}<ul class="tags">
     {% for tag in tags %}
 <li>{{ tag }}</li>
@@ -68,10 +57,6 @@
                 }());
             </script>
 
-
-<!--                   id: {{ a_track.id }}
-                   url: {{ a_track.stream_url }}
-                   id: {{ a_track.download_url }}-->
                 </div>
 
             {% endif %}
@@ -79,8 +64,6 @@
 
     </div>
 </div>
-
-
 
 </div>
 
