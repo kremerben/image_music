@@ -99,6 +99,8 @@ def home(request):
                     sc_id = track.id
                 except Exception, e:
                     sc_id = 999
+                    
+                # Should tab this onto multiple lines for readability
                 Song.objects.create(photo=photo,title=title,description=description,stream_url=stream_url,download_url=download_url,artwork_url=artwork_url,waveform_url=waveform_url,genre=genre,soundcloud_id=sc_id,tag_list=tag_list)
 
             data = {
