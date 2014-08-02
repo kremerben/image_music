@@ -118,13 +118,6 @@ REKOGNITION_API_SECRET = 'vKPn2LHkWHQKMUVK'
 # AUTH_USER_MODEL = "similarity.User"
 
 
-try:
-    from local_settings import *
-except ImportError:
-    pass
-
-
-
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 DATABASES['default'] =  dj_database_url.config()
@@ -136,7 +129,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
-import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
@@ -144,3 +136,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
