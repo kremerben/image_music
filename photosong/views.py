@@ -28,7 +28,7 @@ def home(request):
                 "api_key": settings.REKOGNITION_API_KEY,
                 "api_secret": settings.REKOGNITION_API_SECRET,
                 "jobs": "scene_understanding_3",
-                "urls": urls,
+                "urls": photo_url,
             }
             r = requests.get(url, params=payload)
             # return render(request, "gallery/view_gallery.html", r.response)
