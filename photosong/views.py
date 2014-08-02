@@ -14,15 +14,15 @@ def home(request):
         form = PhotoForm(request.POST, request.FILES)
         if form.is_valid():
             photo = form.save()
-            photo_url = settings.STATIC_MEDIA_ROOT + photo.image.url
-
+            photo_url = photo.image.url
+            print photo_url
             # HARDCODED FOR DEMO PURPOSES
-            if 'yosemite' in photo_url:
-                urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
-            elif 'spaceman' in photo_url:
-                urls = 'http://dev.kremerdesign.com/imagemusic/images/spaceman.png'
-            else:
-                urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
+            # if 'yosemite' in photo_url:
+            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
+            # elif 'spaceman' in photo_url:
+            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/spaceman.png'
+            # else:
+            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
             url = "http://rekognition.com/func/api/"
             payload = {
                 "api_key": settings.REKOGNITION_API_KEY,
@@ -30,8 +30,12 @@ def home(request):
                 "jobs": "scene_understanding_3",
                 "urls": photo_url,
             }
+            print payload
             r = requests.get(url, params=payload)
             # return render(request, "gallery/view_gallery.html", r.response)
+            # print r
+            # print r.text
+            # print r.json()
             json_data = r.json()
             matches = json_data["scene_understanding"]["matches"]
             tags = []

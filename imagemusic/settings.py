@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'south',
     'photosong',
     'requests',
+    'debug_toolbar',
 
 )
 
