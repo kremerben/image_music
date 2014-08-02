@@ -16,19 +16,19 @@ def home(request):
             photo = form.save()
             photo_url = photo.image.url
             print photo_url
-            # HARDCODED FOR DEMO PURPOSES
-            # if 'yosemite' in photo_url:
-            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
-            # elif 'spaceman' in photo_url:
-            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/spaceman.png'
-            # else:
-            #     urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
+            #HARDCODED FOR DEMO PURPOSES
+            if 'yosemite' in photo_url:
+                urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
+            elif 'spaceman' in photo_url:
+                urls = 'http://dev.kremerdesign.com/imagemusic/images/spaceman.png'
+            else:
+                urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
             url = "http://rekognition.com/func/api/"
             payload = {
                 "api_key": settings.REKOGNITION_API_KEY,
                 "api_secret": settings.REKOGNITION_API_SECRET,
                 "jobs": "scene_understanding_3",
-                "urls": photo_url,
+                "urls": urls,
             }
             print payload
             r = requests.get(url, params=payload)
