@@ -21,8 +21,10 @@ def home(request):
                 urls = 'http://dev.kremerdesign.com/imagemusic/images/yosemite.jpg'
             elif 'spaceman' in photo_url:
                 urls = 'http://dev.kremerdesign.com/imagemusic/images/spaceman.png'
-            else:
+            elif 'city' in photo_url:
                 urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
+            else:
+                urls = photo_url
             url = "http://rekognition.com/func/api/"
             payload = {
                 "api_key": settings.REKOGNITION_API_KEY,
@@ -117,15 +119,15 @@ def home(request):
 
 
 #
-# def profile_update(request):
-#     user = User.objects.get(id=user_id)
-#     if request.method == "POST":
-#         form = UserForm(request.POST, request.FILES, instance=user)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("profile")
-#     else:
-#         form = UserForm(instance=user)
-#     data = {"user": request.user, "form": form}
-#     return render(request, "profile/profile_update.html", data)
-#
+def profile_update(request):
+    user = User.objects.get(id=user_id)
+    if request.method == "POST":
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+    else:
+        form = UserForm(instance=user)
+    data = {"user": request.user, "form": form}
+    return render(request, "profile/profile_update.html", data)
+
