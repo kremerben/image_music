@@ -118,16 +118,15 @@ def home(request):
 
 
 
-#
-def profile_update(request):
-    user = User.objects.get(id=user_id)
-    if request.method == "POST":
-        form = UserForm(request.POST, request.FILES, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect("profile")
-    else:
-        form = UserForm(instance=user)
-    data = {"user": request.user, "form": form}
-    return render(request, "profile/profile_update.html", data)
+# def profile_update(request):
+#     user = User.objects.get(id=user_id)
+#     if request.method == "POST":
+#         form = UserForm(request.POST, request.FILES, instance=user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("profile")
+#     else:
+#         form = UserForm(instance=user)
+#     data = {"user": request.user, "form": form}
+#     return render(request, "profile/profile_update.html", data)
 
