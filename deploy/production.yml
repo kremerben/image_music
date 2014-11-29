@@ -1,6 +1,6 @@
 ---
 
-- name: Provision a imagemusic server
+- name: Provision an imagemusic server
   hosts: all
   sudo: yes
   sudo_user: root
