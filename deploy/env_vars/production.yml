@@ -1,13 +1,13 @@
 ---
 
-db_name: "blog_analytics"
+db_name: "imagemusic"
 
-db_user: "blog_analytics"
+db_user: "imagemusic"
 db_password: blastoff
 
-nginx_server_name: "54.69.218.190"
+nginx_server_name: "54.149.43.148"
 
-django_settings_file: rocketu_blog_analytics.settings
+django_settings_file: imagemusic.settings
 
 #su_username: kremerdesign
 #su_email: kremerdesign@gmail.com
