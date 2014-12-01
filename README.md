@@ -1,7 +1,7 @@
 image_music
 ===========
 
-Upload a photo, get an album - Django, Javascript, jQuery, API work
+Upload a photo, get an album - Django, Javascript, jQuery, APIs used, deployed to AWS using Ansible
 
 APIs used
 ---------

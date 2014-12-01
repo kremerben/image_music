@@ -24,7 +24,7 @@ def home(request):
             elif 'city' in photo_url:
                 urls = 'http://dev.kremerdesign.com/imagemusic/images/city.jpg'
             else:
-                urls = photo_url
+                urls = "{}{}".format("http://54.149.43.148/static", photo_url)
             url = "http://rekognition.com/func/api/"
             payload = {
                 "api_key": settings.REKOGNITION_API_KEY,
@@ -39,7 +39,9 @@ def home(request):
             # print r.text
             # print r.json()
             json_data = r.json()
+            print json_data
             matches = json_data["scene_understanding"]["matches"]
+            print matches
             tags = []
             for tag in matches:
                 name = tag['tag']
@@ -50,7 +52,7 @@ def home(request):
 
             #FOR DEMO - ERROR CHECKING
             if len(tags) == 0:
-                tags = ['power', 'lines', 'castle', 'awning', 'sunrise', 'downtown']
+                tags = ['red', 'red', 'red', 'orange']
 
             tracks = []
             for tag in tags:
