@@ -1,7 +1,7 @@
 from fabric.api import *
 from fabric.contrib.files import upload_template
 
-env.hosts = ['54.149.43.148']
+env.hosts = ['54.202.24.219']
 env.user = 'ubuntu'
 env.key_filename = '~/.ssh/imagemusic.pem'
 env.shell = "/bin/bash -l -i -c"
@@ -24,15 +24,15 @@ def deploy():
         with cd("/home/ubuntu/imagemusic"):
             run("git pull origin master")
             run("pip install -r requirements.txt")
-            run("python manage.py migrate")
-            run("python manage.py collectstatic --noinput")
+            run("python3 manage.py migrate")
+            run("python3 manage.py collectstatic --noinput")
     restart_app()
 
 
 @task
 def setup_postgres(database_name, password):
     sudo("adduser {}".format(database_name))
-    sudo("apt-get install postgresql postgresql-contrib libpq-dev")
+    sudo("apt install postgresql postgresql-contrib libpq-dev")
 
     with settings(sudo_user='postgres'):
         sudo("createuser {}".format(database_name))

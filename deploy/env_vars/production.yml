@@ -5,7 +5,7 @@ db_name: "imagemusic"
 db_user: "imagemusic"
 db_password: blastoff
 
-nginx_server_name: "54.149.43.148"
+nginx_server_name: "54.202.24.219"
 
 django_settings_file: imagemusic.settings
 

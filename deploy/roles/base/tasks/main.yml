@@ -1,7 +1,8 @@
 ---
 
-- name: Update and upgrade apt-get
-  apt: update_cache=yes upgrade=yes
+- name: Update all packages to the latest version
+  apt:
+    upgrade: dist
 
 - name: Install base packages
   apt: name={{ item }} state=installed

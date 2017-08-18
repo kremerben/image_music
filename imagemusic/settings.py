@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+BASE_BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -76,13 +76,28 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# LOGGING
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
-
-
-
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, "static"),
 # )
@@ -94,11 +109,13 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'static-only')
 STATIC_MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
 
-
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, "photosong/static", *MEDIA_URL.strip("/").split("/"))
+# MEDIA_ROOT = os.path.join(PROJECT_ROOT, "photosong/static", *MEDIA_URL.strip("/").split("/"))
+MEDIA_ROOT = os.path.join(BASE_BASE_DIR, "static", *MEDIA_URL.strip("/").split("/"))
+# MEDIA_ROOT = STATIC_MEDIA_ROOT
 
+ADMINS = ('Ben','kremer.ads@gmail.com')
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'kremer.ads@gmail.com'
