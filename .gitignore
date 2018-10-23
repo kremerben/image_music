@@ -62,3 +62,4 @@ staticfiles
 
 .idea
 credentials.csv
+.DS_Store
