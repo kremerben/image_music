@@ -1,7 +1,7 @@
-Django==1.6.5
+django>=1.11.19
 South==1.0
 fudge==1.0.3
-requests==2.3.0
+requests>=2.20.0
 simplejson==3.6.0
 soundcloud==0.4.1
 wsgiref==0.1.2
